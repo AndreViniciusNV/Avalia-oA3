@@ -7,11 +7,30 @@
     <groupId>com.unifacs</groupId>
     <artifactId>A3_EngSoftware</artifactId>
     <version>1.0-SNAPSHOT</version>
-
+    <packaging>jar</packaging>
+    <dependencies>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.33</version>
+        </dependency>
+        <dependency>
+            <groupId>org.netbeans.external</groupId>
+            <artifactId>AbsoluteLayout</artifactId>
+            <version>RELEASE230</version>
+        </dependency>
+    </dependencies>
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <exec.mainClass>com.unifacs.a3_engsoftware.JAVA.view.Login</exec.mainClass>
     </properties>
-
+    <build>
+    <resources>
+        <resource>
+            <directory>src/main/java</directory>
+        </resource>
+     </resources>
+</build>
 </project>
