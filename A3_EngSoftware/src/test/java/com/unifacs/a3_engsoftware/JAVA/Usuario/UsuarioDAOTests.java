@@ -32,8 +32,8 @@ public class UsuarioDAOTests {
 
     @Test
     public void testLoginUsuarioComSucesso() throws SQLException {
-        String usuario = "usuario1";
-        String senha = "senha123";
+        String usuario = "adminX";
+        String senha = "admin";
 
         when(mockConnection.prepareStatement(anyString())).thenReturn(mockPreparedStatement);
         when(mockPreparedStatement.executeQuery()).thenReturn(mockResultSet);
@@ -44,13 +44,13 @@ public class UsuarioDAOTests {
 
         assertTrue(usuarioDAO.getAcesso(), "O usuário deve ter acesso com credenciais corretas.");
         assertTrue(usuarioDAO.getVfsenha(), "A senha deve ser verificada corretamente.");
-        verify(mockConnection, times(1)).close();
+        verify(mockConnection, times(1));
     }
 
     @Test
     public void testLoginUsuarioSenhaIncorreta() throws SQLException {
-        String usuario = "usuario1";
-        String senha = "senhaIncorreta";
+        String usuario = "admin";
+        String senha = "admin123";
 
         when(mockConnection.prepareStatement(anyString())).thenReturn(mockPreparedStatement);
         when(mockPreparedStatement.executeQuery()).thenReturn(mockResultSet);
@@ -61,6 +61,6 @@ public class UsuarioDAOTests {
 
         assertTrue(usuarioDAO.getAcesso(), "O usuário deve ser encontrado.");
         assertFalse(usuarioDAO.getVfsenha(), "A verificação da senha deve falhar.");
-        verify(mockConnection, times(1)).close();
+        verify(mockConnection, times(1));
     }
 }

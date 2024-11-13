@@ -1,4 +1,4 @@
-/* package com.unifacs.a3_engsoftware.JAVA.Usuario;
+package com.unifacs.a3_engsoftware.JAVA.Usuario;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -40,7 +40,7 @@ public class UsuarioDAOIntegrationTest {
 
     @Test
     public void testCadastrarUsuario() throws SQLException {
-        Usuario usuario = new Usuario("usuario1", "Nome Teste", "email@teste.com", "senha123");
+        Usuario usuario = new Usuario("Teste Novo XX", "Teste Novo XX", "emailXX.teste@gmail.com", "senhaXXXX");
         usuarioDAO.cadastrarUsuario(usuario);
 
         usuarioDAO.loginUsuario("usuario1", "senha123");
@@ -51,8 +51,8 @@ public class UsuarioDAOIntegrationTest {
 
     @Test
     public void testLoginUsuarioNaoEncontrado() throws SQLException {
-        usuarioDAO.loginUsuario("usuarioNaoExistente", "senha123");
+        usuarioDAO.loginUsuario("teste1", "teste1");
 
         assertFalse(usuarioDAO.getAcesso(), "Usuário não existente não deve ter acesso.");
     }
-} */
+}

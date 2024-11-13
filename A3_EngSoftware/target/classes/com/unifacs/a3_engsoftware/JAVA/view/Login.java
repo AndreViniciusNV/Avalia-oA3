@@ -14,7 +14,7 @@ import javax.swing.JTextField;
  *
  * @author alex.santos
  */
-public class Login extends javax.swing.JFrame {
+ public class Login extends javax.swing.JFrame {
 
     /**
      * Creates new form Login
