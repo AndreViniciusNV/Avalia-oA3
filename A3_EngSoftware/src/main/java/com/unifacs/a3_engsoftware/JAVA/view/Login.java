@@ -119,7 +119,7 @@ import javax.swing.JTextField;
                 if(login.getAcesso() == true){
                     if(login.getVfsenha() == true){
                         this.dispose();
-                        MenuPrincipal menu = new MenuPrincipal();
+                        ListaEventos menu = new ListaEventos();
                         menu.setVisible(true);
                     } else {
                         JOptionPane.showMessageDialog(rootPane, "Senha Incorreta"); 

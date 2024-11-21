@@ -40,10 +40,10 @@ public class UsuarioDAOIntegrationTest {
 
     @Test
     public void testCadastrarUsuario() throws SQLException {
-        Usuario usuario = new Usuario("Teste Novo XX", "Teste Novo XX", "emailXX.teste@gmail.com", "senhaXXXX");
+        Usuario usuario = new Usuario("teste", "Teste Novo", "teste@gmail.com", "teste");
         usuarioDAO.cadastrarUsuario(usuario);
 
-        usuarioDAO.loginUsuario("usuario1", "senha123");
+        usuarioDAO.loginUsuario("teste", "teste");
 
         assertTrue(usuarioDAO.getAcesso(), "O usuário deve ter acesso após o cadastro.");
         assertTrue(usuarioDAO.getVfsenha(), "A senha deve ser verificada corretamente.");

@@ -32,7 +32,7 @@ public class UsuarioDAOTests {
 
     @Test
     public void testLoginUsuarioComSucesso() throws SQLException {
-        String usuario = "adminX";
+        String usuario = "admin";
         String senha = "admin";
 
         when(mockConnection.prepareStatement(anyString())).thenReturn(mockPreparedStatement);
