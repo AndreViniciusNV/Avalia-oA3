@@ -7,8 +7,13 @@ package com.unifacs.a3_engsoftware.JAVA.view;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.text.View;
 
 import com.unifacs.a3_engsoftware.JAVA.Eventos.EventosController;
+import com.unifacs.a3_engsoftware.JAVA.Usuario.UsuarioController;
+import com.unifacs.a3_engsoftware.JAVA.Usuario.Usuario;
+
+import com.unifacs.a3_engsoftware.JAVA.view.Login;
 
 /**
  *
@@ -16,10 +21,16 @@ import com.unifacs.a3_engsoftware.JAVA.Eventos.EventosController;
  */
 public class ListaEventos extends javax.swing.JFrame {
 
+    private final Usuario usuarioLogado;
+    
+
     /**
      * Creates new form Eventos
      */
-    public ListaEventos() {
+    public ListaEventos(Usuario usuarioLogado) {
+        
+        this.usuarioLogado = usuarioLogado;
+
         initComponents();
         
         try{
@@ -42,6 +53,8 @@ public class ListaEventos extends javax.swing.JFrame {
 
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableListaEventos = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,17 +79,32 @@ public class ListaEventos extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jTableListaEventos);
 
+        jLabel1.setText("Bem Vindo, ");
+
+        jLabel2.setText(usuarioLogado.getUsuario());
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 557, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 255, Short.MAX_VALUE))
+                .addContainerGap(217, Short.MAX_VALUE))
         );
 
         pack();
@@ -114,12 +142,13 @@ public class ListaEventos extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new ListaEventos().setVisible(true);
-                System.out.println("Hello World");
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTableListaEventos;
     // End of variables declaration//GEN-END:variables

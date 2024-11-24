@@ -11,6 +11,7 @@ import com.unifacs.a3_engsoftware.ConexaoBD.Conexao;
 public class UsuarioController {
     boolean acesso;
     boolean vfsenha;
+    Usuario userBD;
     
     public void cadastroUsuario(Cadastro view) throws SQLException{
         Connection conexao = new Conexao().getConnection();
@@ -25,6 +26,7 @@ public class UsuarioController {
         login.loginUsuario(view.getjTextFieldUsuario().getText(),view.getjPasswordFieldSenha().getText());
         setAcesso(login.getAcesso());
         setVfsenha(login.getVfsenha());
+        userBD = login.getUserBD();
     }
 
     public boolean getAcesso() {
@@ -42,4 +44,14 @@ public class UsuarioController {
     public void setVfsenha(boolean vfsenha) {
         this.vfsenha = vfsenha;
     }
+
+    public Usuario getUserBD() {
+        return userBD;
+    }
+
+    public void setUserBD(Usuario userBD) {
+        this.userBD = userBD;
+    }
+    
 }
+

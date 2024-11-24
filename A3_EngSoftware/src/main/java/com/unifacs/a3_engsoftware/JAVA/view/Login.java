@@ -10,6 +10,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import com.unifacs.a3_engsoftware.JAVA.Usuario.Usuario;
+
 /**
  *
  * @author alex.santos
@@ -40,6 +42,7 @@ import javax.swing.JTextField;
         jButtonEntrar = new javax.swing.JButton();
         jButtonRegistrese = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -118,8 +121,9 @@ import javax.swing.JTextField;
 
                 if(login.getAcesso() == true){
                     if(login.getVfsenha() == true){
+                        Usuario usuarioLogado = login.getUserBD();
                         this.dispose();
-                        ListaEventos menu = new ListaEventos();
+                        ListaEventos menu = new ListaEventos(usuarioLogado);
                         menu.setVisible(true);
                     } else {
                         JOptionPane.showMessageDialog(rootPane, "Senha Incorreta"); 
@@ -199,5 +203,7 @@ import javax.swing.JTextField;
     private javax.swing.JPasswordField jPasswordFieldSenha;
     private javax.swing.JTextField jTextFieldUsuario;
     // End of variables declaration//GEN-END:variables
+
+
 
 }

@@ -2,10 +2,12 @@ package com.unifacs.a3_engsoftware.JAVA.Usuario;
 
 public class Usuario {
 
+    private int codUser;
     private String nome;
     private String usuario;
     private String email;
     private String senha;
+    private int funcADM;
 
 
     public Usuario(String usuario, String nome, String email, String senha){
@@ -53,4 +55,19 @@ public class Usuario {
         this.senha = senha;
     }
 
+    public int getCodUser() {
+        return codUser;
+    }
+
+    public void setCodUser(int codUser) {
+        this.codUser = codUser;
+    }
+
+    public int getFuncADM() {
+        return funcADM;
+    }
+
+    public void setFuncADM(int funcADM) {
+        this.funcADM = funcADM;
+    }
 }
