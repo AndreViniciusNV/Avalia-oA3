@@ -24,6 +24,7 @@ public class EventosController {
         model.setNumRows(0);
         for (Eventos evento : listaDeEventos) {
             Object[] rowData = new Object[]{
+                evento.getCodevento(),
                 evento.getCategoria(), 
                 evento.getEvento(),  
                 evento.getEndereco(), 
@@ -35,4 +36,21 @@ public class EventosController {
         }
     }
      
+    public void inscreverUsuario(int usuario,int evento) throws SQLException {
+        Connection conexao = new Conexao().getConnection();
+        EventosDAO inscrever = new EventosDAO();
+       inscrever.inscreverUsuario(usuario, evento);
+    }
+    
+    
+    public boolean verificarUsuario(int usuario,int evento) throws SQLException{
+        Connection conexao = new Conexao().getConnection();
+        EventosDAO inscrever = new EventosDAO();
+        
+        boolean valido;
+        valido = inscrever.verificarInscricao(usuario, evento); 
+        
+        return valido;
+    }
+    
 }
