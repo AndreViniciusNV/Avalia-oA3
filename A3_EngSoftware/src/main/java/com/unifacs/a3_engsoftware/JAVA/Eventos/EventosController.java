@@ -4,6 +4,7 @@ package com.unifacs.a3_engsoftware.JAVA.Eventos;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
+
 import javax.swing.table.DefaultTableModel;
 
 import com.unifacs.a3_engsoftware.ConexaoBD.Conexao;
@@ -53,4 +54,12 @@ public class EventosController {
         return valido;
     }
     
+    public void removerEvento(int usuario, int evento) throws SQLException {
+        Connection conexao = new Conexao().getConnection();
+        EventosDAO remover = new EventosDAO();
+        remover.removerEvento(usuario, evento); // Chamando o método corretamente
+    }
 }
+
+
+

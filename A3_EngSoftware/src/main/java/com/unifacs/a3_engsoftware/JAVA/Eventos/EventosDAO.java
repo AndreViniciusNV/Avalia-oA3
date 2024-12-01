@@ -66,6 +66,20 @@ public class EventosDAO {
             throw new SQLException("Não foi possível inscrever no evento. Detalhes: " + e.getMessage());
         }
     }
+
+    public void removerEvento(int codigoUsuario, int codigoEvento) throws SQLException {
+        Connection conexao = new Conexao().getConnection();
+    
+        try {
+            String sql = "DELETE FROM eventosInscritos WHERE codUser = " + codigoUsuario + " AND codEvento = " + codigoEvento + ";";
+            PreparedStatement statement = conexao.prepareStatement(sql);
+            statement.executeUpdate(); // Executa a exclusão no banco
+        } finally {
+            if (conexao != null) {
+                conexao.close(); // Fecha a conexão para liberar recursos
+            }
+        }
+    }
     
 
     public boolean verificarInscricao(int codigoUsuario, int codigoEvento) throws SQLException {
@@ -91,3 +105,4 @@ public class EventosDAO {
     }
     
 }
+
