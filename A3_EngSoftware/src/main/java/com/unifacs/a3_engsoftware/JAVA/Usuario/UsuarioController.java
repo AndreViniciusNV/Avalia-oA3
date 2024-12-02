@@ -12,12 +12,16 @@ public class UsuarioController {
     boolean acesso;
     boolean vfsenha;
     Usuario userBD;
+    boolean valido;
     
     public void cadastroUsuario(Cadastro view) throws SQLException{
         Connection conexao = new Conexao().getConnection();
         Usuario novoUsuario = new Usuario(view.getjTextFieldUsuario().getText(),view.getjTextFieldNome().getText(),view.getjTextFieldEmail().getText(),view.getjPasswordFieldSenha().getText());
         UsuarioDAO cadastro = new UsuarioDAO();
-        cadastro.cadastrarUsuario(novoUsuario);
+        valido = novoUsuario.validarCadastro();
+        if (valido){
+            cadastro.cadastrarUsuario(novoUsuario);
+        }
     }
 
     public void loginUsuario(Login view) throws SQLException{

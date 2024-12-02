@@ -16,6 +16,22 @@ public class Usuario {
         this.email = email;
         this.senha = senha;
     }
+    
+    public boolean validarCadastro() {
+        if (usuario == null || usuario.isEmpty()) {
+            return false; // Usuário vazio ou nulo
+        }
+        if (nome == null || nome.isEmpty()) {
+            return false; // Nome vazio ou nulo
+        }
+        if (email == null || !email.matches("^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$")) {
+            return false; // E-mail inválido
+        }
+        if (senha == null || senha.length() < 6) {
+            return false; // Senha nula ou com menos de 6 caracteres
+        }
+        return true; // Cadastro válido
+    }
 
     public void mostrarDadosUsuario(){
         System.out.println(nome);
