@@ -79,16 +79,81 @@ public class ListaEventos extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+
         jTableListaEventos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTableListaEventosMouseClicked(evt);
-            }
-
-            private void jTableListaEventosMouseClicked(MouseEvent evt) {
-                // TODO Auto-generated method stub
-                throw new UnsupportedOperationException("Unimplemented method 'jTableListaEventosMouseClicked'");
+                EventosController evento = new EventosController();
+                if (evt.getClickCount() == 2) {
+                    int row = jTableListaEventos.getSelectedRow();
+                    if (row != -1) { // Verifica se uma linha foi selecionada
+                        // Obtém o código do evento da linha selecionada
+                        String nomeEvento = (String) jTableListaEventos.getValueAt(row, 2); // Supondo que o nome do evento está na coluna 2
+                        int codigoEvento = (int) jTableListaEventos.getValueAt(row, 0); // Supondo que o código do evento está na coluna 0
+                        int confirm = JOptionPane.showConfirmDialog(
+                                ListaEventos.this,
+                                "Deseja se inscrever no evento '" + nomeEvento + "'?",
+                                "Confirmação",
+                                JOptionPane.YES_NO_OPTION);
+                        if (confirm == JOptionPane.YES_OPTION) {
+                            try {
+                                if (evento.verificarUsuario(usuarioLogado.getCodUser(), codigoEvento)) {
+                                    try {
+                                        // Chama o método para inscrever no evento
+                                        evento.inscreverUsuario(usuarioLogado.getCodUser(), codigoEvento);
+                                        JOptionPane.showMessageDialog(
+                                                ListaEventos.this,
+                                                "Inscrição realizada com sucesso!",
+                                                "Sucesso",
+                                                JOptionPane.INFORMATION_MESSAGE);
+                                        atualizarTabela();
+                                    } catch (SQLException ex) {
+                                        JOptionPane.showMessageDialog(
+                                                ListaEventos.this,
+                                                "Erro ao realizar inscrição: " + ex.getMessage(),
+                                                "Erro",
+                                                JOptionPane.ERROR_MESSAGE);
+                                    }
+                                } else {
+                                    // Pergunta se o usuário quer cancelar a inscrição
+                                    int cancelConfirm = JOptionPane.showConfirmDialog(
+                                            ListaEventos.this,
+                                            "Você já está inscrito no evento '" + nomeEvento + "'. Deseja cancelar a inscrição?",
+                                            "Confirmação",
+                                            JOptionPane.YES_NO_OPTION,
+                                            JOptionPane.QUESTION_MESSAGE);
+        
+                                    if (cancelConfirm == JOptionPane.YES_OPTION) {
+                                        try {
+                                            // Chama o método para remover a inscrição do evento
+                                            evento.removerEvento(usuarioLogado.getCodUser(), codigoEvento);
+                                            JOptionPane.showMessageDialog(
+                                                    ListaEventos.this,
+                                                    "Inscrição removida com sucesso!",
+                                                    "Sucesso",
+                                                    JOptionPane.INFORMATION_MESSAGE);
+                                            atualizarTabela(); // Atualiza a tabela após a remoção
+                                        } catch (SQLException ex) {
+                                            JOptionPane.showMessageDialog(
+                                                    ListaEventos.this,
+                                                    "Erro ao remover inscrição: " + ex.getMessage(),
+                                                    "Erro",
+                                                    JOptionPane.ERROR_MESSAGE);
+                                        }
+                                    }
+                                }
+                            } catch (SQLException e) {
+                                JOptionPane.showMessageDialog(
+                                        ListaEventos.this,
+                                        "Erro ao verificar inscrição: " + e.getMessage(),
+                                        "Erro",
+                                        JOptionPane.ERROR_MESSAGE);
+                            }
+                        }
+                    }
+                }
             }
         });
+        
         jScrollPane2.setViewportView(jTableListaEventos);
 
         jLabel1.setText("Bem Vindo, ");
