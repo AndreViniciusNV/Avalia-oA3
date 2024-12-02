@@ -1,4 +1,4 @@
-package com.unifacs.a3_engsoftware.JAVA.Usuario;
+/*package com.unifacs.a3_engsoftware.JAVA.Usuario;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -55,4 +55,4 @@ public class UsuarioDAOIntegrationTest {
 
         assertFalse(usuarioDAO.getAcesso(), "Usuário não existente não deve ter acesso.");
     }
-}
+}*/

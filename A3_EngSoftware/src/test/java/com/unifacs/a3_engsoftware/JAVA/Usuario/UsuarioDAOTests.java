@@ -1,4 +1,4 @@
-/*package com.unifacs.a3_engsoftware.JAVA.Usuario;
+package com.unifacs.a3_engsoftware.JAVA.Usuario;
 import com.unifacs.a3_engsoftware.ConexaoBD.Conexao;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -63,4 +63,4 @@ public class UsuarioDAOTests {
         assertFalse(usuarioDAO.getVfsenha(), "A verificação da senha deve falhar.");
         verify(mockConnection, times(1));
     }
-}*/
+}
