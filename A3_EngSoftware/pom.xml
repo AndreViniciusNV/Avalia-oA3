@@ -36,6 +36,12 @@
             <version>2.1.214</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>5.9.3</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -44,10 +50,10 @@
         <exec.mainClass>com.unifacs.a3_engsoftware.JAVA.view.Login</exec.mainClass>
     </properties>
     <build>
-    <resources>
-        <resource>
-            <directory>src/main/java</directory>
-        </resource>
-     </resources>
-</build>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+            </resource>
+        </resources>
+    </build>
 </project>
