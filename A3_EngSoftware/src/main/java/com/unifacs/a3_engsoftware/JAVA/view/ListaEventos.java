@@ -4,6 +4,7 @@
  */
 package com.unifacs.a3_engsoftware.JAVA.view;
 
+import java.awt.event.MouseEvent;
 import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
@@ -82,6 +83,11 @@ public class ListaEventos extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTableListaEventosMouseClicked(evt);
             }
+
+            private void jTableListaEventosMouseClicked(MouseEvent evt) {
+                // TODO Auto-generated method stub
+                throw new UnsupportedOperationException("Unimplemented method 'jTableListaEventosMouseClicked'");
+            }
         });
         jScrollPane2.setViewportView(jTableListaEventos);
 
@@ -114,10 +120,6 @@ public class ListaEventos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTableListaEventosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableListaEventosMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTableListaEventosMouseClicked
 
     /**
      * @param args the command line arguments
