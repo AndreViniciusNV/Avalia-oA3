@@ -132,8 +132,18 @@ public class Cadastro extends javax.swing.JFrame {
             try{
                 UsuarioController cadastro = new UsuarioController();
                 cadastro.cadastroUsuario(this);
-                JOptionPane.showMessageDialog(rootPane, "Cadastro Realizado!");
-                this.setVisible(false);
+                if (cadastro.isValidaUsuario() & cadastro.isValidaNome() & cadastro.isValidaEmail() & cadastro.isValidaSenha()){
+                    JOptionPane.showMessageDialog(rootPane, "Cadastro Realizado!");
+                    this.setVisible(false);
+                } else if(!cadastro.isValidaUsuario()){
+                   JOptionPane.showMessageDialog(rootPane, "Usuário Inválido - Limite de Caracteres 10!"); 
+                } else if(!cadastro.isValidaNome()) {
+                   JOptionPane.showMessageDialog(rootPane, "Nome Inválido - Limite de Caracteres 50!"); 
+                } else if(!cadastro.isValidaEmail()){
+                   JOptionPane.showMessageDialog(rootPane, "Email Inválido!"); 
+                } else if(!cadastro.isValidaSenha()) {
+                   JOptionPane.showMessageDialog(rootPane, "Senha Inválido - Mínimo 6 Caracteres!");  
+                }
             } catch (SQLException sql){
                 if (sql.getErrorCode() == 1062){
                     JOptionPane.showMessageDialog(rootPane, "O Nome de Usuário Já Existe!");

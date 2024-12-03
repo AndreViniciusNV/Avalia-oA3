@@ -8,6 +8,11 @@ public class Usuario {
     private String email;
     private String senha;
     private int funcADM;
+    
+    boolean validaUsuario;
+    boolean validaNome;
+    boolean validaEmail;
+    boolean validaSenha;
 
 
     public Usuario(String usuario, String nome, String email, String senha){
@@ -17,17 +22,57 @@ public class Usuario {
         this.senha = senha;
     }
     
+    public boolean validarUsuario(){
+        if(usuario == null || usuario.isEmpty() || usuario.length() > 10){
+            validaUsuario = false;
+            return validaUsuario;
+        } else {
+            validaUsuario = true;
+            return validaUsuario;
+        }
+    }
+    
+    public boolean validarNome(){
+        if(nome == null || nome.isEmpty() || nome.length() > 50){
+            validaNome = false;
+            return validaNome;
+        } else {
+            validaNome = true;
+            return validaNome;
+        }
+    }
+    
+    public boolean validarEmail() {
+        if(email == null || !email.matches("^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$")) {
+            validaEmail = false;
+            return validaEmail;
+        } else {
+            validaEmail = true;
+            return validaEmail;
+        }
+    }
+    
+   public boolean validarSenha() {
+        if (senha == null || senha.length() < 6) {
+            validaSenha = false;
+            return validaSenha;
+        } else {
+            validaSenha = true;
+            return validaSenha;
+        }
+    }
+    
     public boolean validarCadastro() {
-        if (usuario == null || usuario.isEmpty()) {
+        if (!validarUsuario()) {
             return false; // Usuário vazio ou nulo
         }
-        if (nome == null || nome.isEmpty()) {
+        if (!validarNome()) {
             return false; // Nome vazio ou nulo
         }
-        if (email == null || !email.matches("^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$")) {
+        if (!validarEmail()) {
             return false; // E-mail inválido
         }
-        if (senha == null || senha.length() < 6) {
+        if (!validarSenha()) {
             return false; // Senha nula ou com menos de 6 caracteres
         }
         return true; // Cadastro válido
@@ -86,4 +131,38 @@ public class Usuario {
     public void setFuncADM(int funcADM) {
         this.funcADM = funcADM;
     }
+
+    public boolean isValidaUsuario() {
+        return validaUsuario;
+    }
+
+    public void setValidaUsuario(boolean validaUsuario) {
+        this.validaUsuario = validaUsuario;
+    }
+
+    public boolean isValidaNome() {
+        return validaNome;
+    }
+
+    public void setValidaNome(boolean validaNome) {
+        this.validaNome = validaNome;
+    }
+
+    public boolean isValidaEmail() {
+        return validaEmail;
+    }
+
+    public void setValidaEmail(boolean validaEmail) {
+        this.validaEmail = validaEmail;
+    }
+
+    public boolean isValidaSenha() {
+        return validaSenha;
+    }
+
+    public void setValidaSenha(boolean validaSenha) {
+        this.validaSenha = validaSenha;
+    }
+    
+    
 }

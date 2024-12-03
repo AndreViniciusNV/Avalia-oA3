@@ -13,13 +13,24 @@ public class UsuarioController {
     boolean vfsenha;
     Usuario userBD;
     boolean valido;
+    boolean validaUsuario;
+    boolean validaNome;
+    boolean validaEmail;
+    boolean validaSenha;
+    
     
     public void cadastroUsuario(Cadastro view) throws SQLException{
         Connection conexao = new Conexao().getConnection();
         Usuario novoUsuario = new Usuario(view.getjTextFieldUsuario().getText(),view.getjTextFieldNome().getText(),view.getjTextFieldEmail().getText(),view.getjPasswordFieldSenha().getText());
         UsuarioDAO cadastro = new UsuarioDAO();
+        
         valido = novoUsuario.validarCadastro();
-        if (valido){
+        validaUsuario = novoUsuario.validarUsuario();
+        validaNome = novoUsuario.validarNome();
+        validaEmail = novoUsuario.validarEmail();
+        validaSenha = novoUsuario.validarSenha();
+        
+        if (valido & validaUsuario & validaNome & validaEmail & validaSenha){
             cadastro.cadastrarUsuario(novoUsuario);
         }
     }
@@ -55,6 +66,46 @@ public class UsuarioController {
 
     public void setUserBD(Usuario userBD) {
         this.userBD = userBD;
+    }
+
+    public boolean isValido() {
+        return valido;
+    }
+
+    public void setValido(boolean valido) {
+        this.valido = valido;
+    }
+
+    public boolean isValidaUsuario() {
+        return validaUsuario;
+    }
+
+    public void setValidaUsuario(boolean validaUsuario) {
+        this.validaUsuario = validaUsuario;
+    }
+
+    public boolean isValidaNome() {
+        return validaNome;
+    }
+
+    public void setValidaNome(boolean validaNome) {
+        this.validaNome = validaNome;
+    }
+
+    public boolean isValidaEmail() {
+        return validaEmail;
+    }
+
+    public void setValidaEmail(boolean validaEmail) {
+        this.validaEmail = validaEmail;
+    }
+
+    public boolean isValidaSenha() {
+        return validaSenha;
+    }
+
+    public void setValidaSenha(boolean validaSenha) {
+        this.validaSenha = validaSenha;
     }
     
 }
